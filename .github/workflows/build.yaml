@@ -42,3 +42,12 @@ jobs:
           git add .
           git diff --quiet && git diff --staged --quiet || git commit -m "auto: build updates"
           git push
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+            apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+            accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+            projectName: avoyant--website
+            directory: .
+            branch: master
