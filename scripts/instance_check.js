@@ -2,11 +2,15 @@ import { stopSplash } from "./splash.js";
 import { stopLoadingDots } from "./loading_dots.js";
 
 let splashEl;
-let downloadBtn;
+let gitLinkBtn;
 
 export async function findLocal() {
     splashEl = document.querySelector(".splash");
-    downloadBtn = document.querySelector(".download");
+    gitLinkBtn = document.querySelector(".gitLink");
+
+    if (!splashEl) {
+        return
+    }
 
     console.log("Looking for local instance...");
 
@@ -51,7 +55,7 @@ export async function findLocal() {
 
     setTimeout(() => {
         splashEl.innerHTML =
-            "No local instance found.<br>Download Avoyant to get started.";
+            "No local instance found.<br><br>Visit our github to get started.";
 
         splashEl.style.opacity = 1;
         splashEl.classList.add("shifted");
@@ -60,7 +64,7 @@ export async function findLocal() {
     document.getElementById("status")?.remove();
 
     setTimeout(() => {
-        downloadBtn.style.opacity = "1";
+        gitLinkBtn.style.opacity = "1";
     }, 1000);
 
     console.log("No local instance found.");

@@ -1,0 +1,41 @@
+name: Build Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  auto-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install pipreqs
+        run: pip install pipreqs
+
+      - name: Generate requirements.txt
+        run: pipreqs . --force
+
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Run build pipeline
+        run: python init/build.py
+
+      - name: Commit changes if any
+        if: github.actor != 'auto-bot'
+        run: |
+          git config --global user.name "auto-bot"
+          git config --global user.email "bot@users.noreply.github.com"
+          git add .
+          git diff --quiet && git diff --staged --quiet || git commit -m "auto: build updates"
+          git push

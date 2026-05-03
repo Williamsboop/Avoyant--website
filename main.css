@@ -36,10 +36,10 @@ src: local('Uni Sans Demo Heavy Italic Caps'), url('assets/UniSansDemoHeavyItali
 
 :root {
     --primaryColor: #70e000;
-    --secondaryColor: #38B000;
+    --secondaryColor: #38b000;
     --textColor: white;
-    --primaryBackgroundColor: #373737;
-    --secondaryBackgrounColor: black;
+    --primaryBackgroundColor: #1e1e1e;
+    --secondaryBackgroundColor: #477f0f;
     --navAndFooterHeight: 7.5vh;
     --easeTransition: .2s ease-in-out;
 }
@@ -75,19 +75,27 @@ body p.splash {
     top: 48%;
 }
 
-a.download {
+a.gitLink {
     position: absolute;
     opacity: 0;
-    height: 4vh;
+    height: 4.5vh;
     width: fit-content;
     transform: translate(-50%, -50%);
-    top: 55%; left: 50%;
+    top: 56%; left: 50%;
     transition: var(--easeTransition);
 }
 
-a.download img {
-    height: 90%;
+a.gitLink svg {
+    height: 4vh;
+    width: auto;
+    fill: var(--primaryColor);
+    transition: var(--easeTransition);
 }
+
+a.gitLink svg:hover {
+    scale: 1.5;
+}
+
 
 .loading-text span {
     font-family: 'Inter', sans-serif;
@@ -113,14 +121,14 @@ a.download img {
 }
 
 nav {
-    background-color: var(--secondaryBackgrounColor);
+    background: linear-gradient(to right, var(--primaryBackgroundColor), var(--secondaryBackgroundColor));
     height: var(--navAndFooterHeight);
     width: 100%;
     position: absolute;
     top: 0;
     font-size: 80%;
-    border-bottom: 2px solid;
-    border-image: linear-gradient(to right, var(--primaryColor), var(--secondaryColor)) 1;
+    -webkit-box-shadow: 0px 0px 14px 4px #000000; 
+    box-shadow: 0px 0px 14px 4px #000000;
 }
 
 nav #logo {
@@ -183,13 +191,13 @@ nav a:hover::after {
 }
 
 footer {
-    background-color: var(--secondaryBackgrounColor);
+    background: linear-gradient(to left, var(--primaryBackgroundColor), var(--secondaryBackgroundColor));
     height: var(--navAndFooterHeight);
     width: 100vw;
     position: absolute;
     bottom: 0;
-    border-top: 2px solid;
-    border-image: linear-gradient(to right, var(--primaryColor), var(--secondaryColor)) 1;
+    -webkit-box-shadow: 0px 0px 14px 4px #000000; 
+    box-shadow: 0px 0px 14px 4px #000000;
 }
 
 footer div.container {
@@ -203,14 +211,55 @@ footer div.container {
 }
 
 footer img {
+    mask: url("assets/github-mask.svg");
+    mask-size: cover;
     transition: var(--easeTransition);
     border-radius: 50%;
-    height: 50%;
-    transform: translate(-50%, -50%);
+    height: 60%;
     transform-origin: center;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 footer img:hover {
     object-fit: cover;
-    transform: translate(-50%, -50%) scale(1.25);
+    transform: translate(-50%, -50%) scale(.75);
 }
+
+.placeholderTxt {
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+    text-align: center;
+    font-size: 100%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%; left: 50%;
+    pointer-events: none;
+}
+
+.g-mask {
+    width: 50px;
+    height: 50px;
+    -webkit-mask-image: url("assets/github-mask.svg");
+    mask-image: url("assets/github-mask.svg");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+    background-color: white;
+}
+
+.repo {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%; left: 50%;
+    width: 90vw
+}
+
+ /*  MEDIA QUERIES  */
+
+@media (max-width: 767px) { /* Styles for smaller devices */ }
+
+@media (min-width: 768px) and (max-width: 991px) { /* Tablet styles */ }

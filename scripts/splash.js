@@ -3,7 +3,6 @@ const splashTexts = [
     "Knocking on ports...",
     "Summoning your instance...",
     "Scanning the void...",
-    "Crying silently...",
     "Refreshing reality...",
     "Locking onto System32...",
     "Downloading more RAM...",
@@ -33,7 +32,8 @@ const splashTexts = [
     "Finalizing nothing... ",
     "Loading loading script...",
     "Hacking the mainframe...",
-    "Hello World(Print)ing..."
+    "Hello World(Print)ing...",
+    "Firing when ready...",
 ];
 
 let splashEl;
@@ -51,6 +51,9 @@ function cycleSplash() {
 
 export function startSplash() {
     splashEl = document.querySelector(".splash");
+    if (!splashEl) {
+        return
+    }
 
     cycleSplash();
     interval = setInterval(cycleSplash, 1500);

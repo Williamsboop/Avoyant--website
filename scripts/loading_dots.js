@@ -9,6 +9,13 @@ function animate() {
 }
 
 export function startLoadingDots() {
+
+    if (!document.querySelector("p.splash")){
+        return;
+    } else {
+        console.log("splash element found.")
+    }
+
     spans = document.querySelectorAll("#status span");
     interval = setInterval(animate, 200);
 }
