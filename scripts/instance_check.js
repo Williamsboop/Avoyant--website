@@ -23,7 +23,7 @@ export async function findLocal() {
     let found = false;
 
     try {
-        const res = await fetch("http://avoyant.local:8700", {
+        const res = await fetch("https://avoyant.local:8700", {
             signal: controller.signal
         });
 
