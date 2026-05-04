@@ -43,7 +43,7 @@ export async function findLocal() {
         stopSplash();
         stopLoadingDots();
 
-        window.location.href = "http://avoyant.local:8000";
+        window.location.href = "https://avoyant.local:8700";
         return;
     }
 
