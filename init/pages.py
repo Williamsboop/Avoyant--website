@@ -1,10 +1,11 @@
 from dataclasses import dataclass, field
-from pathlib import Path as root
+from pathlib import Path
 
-ROOT = root()
+ROOT = Path()
 EXISTS = lambda x: x.exists()
 SIZE = lambda x: x.stat().st_size
 TEMPLATE_HTML_PATH = ROOT / "templates" / "base.html"
+TEMPLATES_PATH = Path("templates")
 
 @dataclass
 class Initializer:
@@ -33,5 +34,20 @@ class Initializer:
         else:
             raise FileNotFoundError("Template File Not Found.")
         
+@dataclass
+class ModularContent:
+    templateFiles:set = field(init=False, default_factory=set)
+    
+    def __post_init__(self) -> None:
+        for file in TEMPLATES_PATH.iterdir():
+            self.templateFiles.add(str(file).replace("templates\\", ""))
+        self.updateModularContent()
+        
+    def updateModularContent(self) -> None:
+        for file in ROOT.iterdir():
+            if '.html' in str(file):
+                print(file)
+
 if __name__ == "__main__":
     Initializer()
+    ModularContent()

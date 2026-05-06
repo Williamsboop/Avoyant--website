@@ -1,32 +1,4 @@
 @font-face {
-font-family: 'Uni Sans Demo Thin CAPS';
-font-style: normal;
-font-weight: normal;
-src: local('Uni Sans Demo Thin CAPS'), url('assets/UniSansDemoThinCAPS.woff') format('woff');
-}    
-
-@font-face {
-font-family: 'Uni Sans Demo Thin Italic CAPS';
-font-style: normal;
-font-weight: normal;
-src: local('Uni Sans Demo Thin Italic CAPS'), url('assets/UniSansDemoThinItalicCAPS.woff') format('woff');
-}    
-
-@font-face {
-font-family: 'Uni Sans Demo Heavy CAPS';
-font-style: normal;
-font-weight: normal;
-src: local('Uni Sans Demo Heavy CAPS'), url('assets/UniSansDemoHeavyCAPS.woff') format('woff');
-}
-
-@font-face {
-font-family: 'Uni Sans Demo Heavy Italic Caps';
-font-style: normal;
-font-weight: normal;
-src: local('Uni Sans Demo Heavy Italic Caps'), url('assets/UniSansDemoHeavyItalicCaps.woff') format('woff');
-}
-
-@font-face {
     font-family: "Inter";
     font-optical-sizing: auto;
     font-weight: weight;
@@ -75,7 +47,7 @@ src: local('Uni Sans Demo Heavy Italic Caps'), url('assets/UniSansDemoHeavyItali
 }
 
 * {
-    font-family: 'Uni Sans Demo Thin CAPS', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: var(--textColor);
     cursor: none;
 }
@@ -204,7 +176,7 @@ nav a span {
 
 nav a::after {
     content: attr(title);
-    font-family: 'Uni Sans Demo Heavy CAPS', sans-serif;
+    font-family: 'Inter', sans-serif;
     grid-area: 1 / 1;
     opacity: 0;
     visibility: hidden;
